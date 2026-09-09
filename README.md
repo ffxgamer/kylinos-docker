@@ -12,6 +12,7 @@
 -	[`v10-sp1`](https://github.com/MacroSAN-Tech/kylin-sys-docker-image/blob/main/kylin_v10.sys.Dockerfile)
 -	[`v10-sp2`](https://github.com/MacroSAN-Tech/kylin-sys-docker-image/blob/main/kylin_v10.sys.Dockerfile)
 -	[`v10-sp3`](https://github.com/MacroSAN-Tech/kylin-sys-docker-image/blob/main/kylin_v10.sys.Dockerfile)
+-	`v11-sp3` (Kylin Linux Advanced Server V11 2503)
 
 # Quick reference (cont.)
 
@@ -40,6 +41,28 @@ RUN yum install -y vi
 ```
 
 # Image Variants
+
+## Local V11-SP3 build
+
+The V11 image is built from the Kylin Linux Advanced Server 11 2503 repositories:
+
+```console
+$ ./build-v11.sh
+```
+
+This produces local images named `kylin:v11-sp3-amd64` and `kylin:v11-sp3-arm64`.
+
+## Automatic GHCR publishing
+
+The `Publish Kylin V11 image to GHCR` workflow builds and publishes a multi-architecture image when the V11 build inputs change on `main`, or when started manually from the Actions page.
+
+The published image is:
+
+```console
+$ docker pull ghcr.io/ffxgamer/kylinos-docker:v11-sp3
+```
+
+The workflow uses the repository's built-in `GITHUB_TOKEN`, so no personal access token is required in GitHub Actions. Change the package visibility to public from the repository's Packages page after the first successful run if anonymous pulls are needed.
 
 ## macrosan/kylin:v10-sp3
 ```
